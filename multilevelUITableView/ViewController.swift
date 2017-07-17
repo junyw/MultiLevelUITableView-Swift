@@ -34,15 +34,21 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func collapseRows(_ tableView: UITableView, rowsAt indexPath: IndexPath, withChidren ids: [Int]) {
-        for childId in ids {
-            if let arr = self.dict.getDescendants(of: childId) {
-                self.collapseRows(tableView, rowsAt: indexPath, withChidren: arr)
+    func collapseRows(_ tableView: UITableView, descendantsOf row: Int) {
+        if let item = self.dict.getItem(atRow: row) {
+            // get all rows that needs to be removed
+//            let rows: [Int]? = self.dict.getRowOfAllDescendants(ofId: item.id!)
+//            // remove from dict
+//            self.dict.removeAllDescendants(ofId: item.id!)
+            
+            if let rows: [Int] = self.dict.collapseDescendants(ofId: item.id!) {
+                // remove from table
+                var indexesToRemove: [IndexPath] = []
+                for row in rows {
+                    indexesToRemove.append(IndexPath(row: row, section: 0))
+                }
+                tableView.deleteRows(at: indexesToRemove, with: UITableViewRowAnimation.right)
             }
-            let childIndex = self.dict.getRow(ofId: childId)
-            let indextToRemove = IndexPath(row: childIndex!, section: 0)//?
-            self.dict.collapse(descendantsOf: childId) // Should not be childId
-            tableView.deleteRows(at: [indextToRemove], with: UITableViewRowAnimation.right)
         }
     }
 }
@@ -50,10 +56,7 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.section)
         print(indexPath.row)
-        if let item = self.dict.getItem(atRow: indexPath.row) {
-            let descendants = self.dict.getDescendants(of: item.id!)
-            self.collapseRows(tableView, rowsAt: indexPath, withChidren: descendants!)
-        }
+        self.collapseRows(tableView, descendantsOf: indexPath.row)
     }
 }
 extension ViewController: UITableViewDataSource {
