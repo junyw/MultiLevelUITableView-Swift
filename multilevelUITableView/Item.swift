@@ -16,8 +16,9 @@ class Item {
         self.descendants = descendants
     }
 
-    var id: Int = 0
+    var id: Int?
     var indent: Int?
     var title: String?
     var descendants: [Int]?
+    var collapsed: Bool = false
 }

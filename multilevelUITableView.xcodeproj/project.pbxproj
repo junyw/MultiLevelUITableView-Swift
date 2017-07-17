@@ -16,6 +16,7 @@
 		33BFDB461F1C09530011F6CB /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFDB451F1C09530011F6CB /* CustomCell.swift */; };
 		33BFDB481F1C0E000011F6CB /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33BFDB471F1C0E000011F6CB /* CustomCell.xib */; };
 		33BFDB4A1F1C14B10011F6CB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFDB491F1C14B10011F6CB /* Item.swift */; };
+		33BFDB4C1F1D0B8A0011F6CB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFDB4B1F1D0B8A0011F6CB /* Dictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		33BFDB451F1C09530011F6CB /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		33BFDB471F1C0E000011F6CB /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		33BFDB491F1C14B10011F6CB /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		33BFDB4B1F1D0B8A0011F6CB /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				33BFDB451F1C09530011F6CB /* CustomCell.swift */,
 				33BFDB471F1C0E000011F6CB /* CustomCell.xib */,
 				33BFDB491F1C14B10011F6CB /* Item.swift */,
+				33BFDB4B1F1D0B8A0011F6CB /* Dictionary.swift */,
 			);
 			path = multilevelUITableView;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33BFDB4A1F1C14B10011F6CB /* Item.swift in Sources */,
+				33BFDB4C1F1D0B8A0011F6CB /* Dictionary.swift in Sources */,
 				33BFDB261F1BEEDC0011F6CB /* ViewController.swift in Sources */,
 				33BFDB461F1C09530011F6CB /* CustomCell.swift in Sources */,
 				33BFDB241F1BEEDC0011F6CB /* AppDelegate.swift in Sources */,
@@ -426,6 +430,7 @@
 				33BFDB3F1F1BEEDD0011F6CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		33BFDB401F1BEEDD0011F6CB /* Build configuration list for PBXNativeTarget "multilevelUITableViewTests" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +439,7 @@
 				33BFDB421F1BEEDD0011F6CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
