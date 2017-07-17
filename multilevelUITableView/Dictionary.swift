@@ -9,39 +9,73 @@
 import Foundation
 
 class Dictionary {
-    var indexes: [Int] = []
     var _indexes: [Int] = []
     var objects: [Int: Item] = [:]
     func count() -> Int {
-        return indexes.count
-    }
-    func _count() -> Int {
         return _indexes.count
+    }
+    func expandDescendants(ofId id: Int) -> [Int]? {
+        if let item = self.getItem(withId: id) {
+            item.collapsed = false
+            
+            insertAllDescendants(ofId: id)
+            print(_indexes)
+            let rows = getRowOfAllDescendants(ofId: id)
+            return rows
+        }
+        return []
+    }
+    func insertAllDescendants(ofId id: Int) {
+        
+        if let item = self.getItem(withId: id) {
+            
+            let row = self.getRow(ofId: id)!
+            if !item.collapsed {
+                let descendants = item.descendants
+                var counter = row + 1
+                for childId in descendants {
+                    if let child = getItem(withId: childId) {
+                        // add this child back to _indexes
+                        _indexes.insert(childId, at: counter)
+                        counter += 1
+                        if !child.collapsed {
+                            insertAllDescendants(ofId: childId)
+                        }
+                    }
+                }
+                item.collapsed = false
+            }
+        }
     }
     func collapseDescendants(ofId id: Int) -> [Int]? {
         if let item = self.getItem(withId: id) {
             if item.collapsed {
                 return nil
             } else {
-                item.collapsed = true
                 let rows = getRowOfAllDescendants(ofId: id)
                 removeAllDescendants(ofId: id)
+                item.collapsed = true
                 return rows
             }
         }
         return nil
     }
     func getRowOfAllDescendants(ofId id: Int) -> [Int]? {
-        var results = self.getAllRows(ofId: id)
-        results?.remove(at: (results?.index(of: id))!)
+        var results: [Int] = []
+        if let item = getItem(withId: id) {
+            for childId in item.descendants {
+                if let rows = getAllRows(ofId: childId) {
+                    results.append(contentsOf: rows)
+                }
+            }
+        }
         return results
     }
     func removeAllDescendants(ofId id: Int) {
         if let item = self.getItem(withId: id) {
-            if let descendants = item.descendants {
-                for childId in descendants {
-                    removeAll(ofId: childId)
-                }
+            let descendants = item.descendants
+            for childId in descendants {
+                removeAll(ofId: childId)
             }
         }
     }
@@ -51,14 +85,12 @@ class Dictionary {
                 _indexes.remove(at: id)
 
             }
-            if let descendants = item.descendants {
-                for childId in descendants {
-                    removeAll(ofId: childId)
-                }
+            let descendants = item.descendants
+            for childId in descendants {
+                removeAll(ofId: childId)
             }
         }
     }
-
     func getItem(atRow row: Int) -> Item? {
         return objects[_indexes[row]]
     }
@@ -74,9 +106,9 @@ class Dictionary {
     }
     func getAllRows(ofId id: Int) -> [Int]? {
         var results: [Int] = []
-        if let item = self.getItem(withId: id) {
+        if let item = self.getItem(withId: id), !item.collapsed {
             let descendants = item.descendants
-            for childId in descendants! {
+            for childId in descendants {
                 let rows: [Int] = self.getAllRows(ofId: childId)!
                 results.append(contentsOf: rows)
             }
@@ -90,36 +122,14 @@ class Dictionary {
         return objects[id]
     }
     func getDescendants(of id: Int) -> [Int]? {
-        return objects[id]!.descendants!
+        return objects[id]!.descendants
     }
     func addItemToLast(_ item: Item, id: Int) {
         objects[id] = item
-        indexes.append(id)
         _indexes.append(id)
     }
-    func isCollapsed(_ id: Int) -> Bool {
-        return objects[id]!.collapsed
-    }
-    
-//    func collapse(descendantsOf id: Int) {
-//        let descendants = objects[id]?.descendants
-//        for id in descendants! {
-//            if let index = _indexes.index(of: id) {
-//                _indexes.remove(at: index)
-//            }
-//        }
-//        objects[id]?.collapsed = true
-//    }
-    func show(descendantsOf id: Int) {
-        let descendants = objects[id]?.descendants
-        if let rowOfParent = _indexes.index(of: id) {
-            var count = rowOfParent
-            for id in descendants! {
-                _indexes.insert(id, at: count)
-                count = count + 1
-            }
-        }
-        objects[id]?.collapsed = false
-
+    func isCollapsed(atRow row: Int) -> Bool {
+        let item = getItem(atRow: row)
+        return (item?.collapsed)!
     }
 }

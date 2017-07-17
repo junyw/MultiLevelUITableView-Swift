@@ -21,9 +21,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        dict.addItemToLast(item1, id: item1.id!)
-        dict.addItemToLast(item2, id: item2.id!)
-        dict.addItemToLast(item3, id: item3.id!)
+        dict.addItemToLast(item1, id: item1.id)
+        dict.addItemToLast(item2, id: item2.id)
+        dict.addItemToLast(item3, id: item3.id)
 
         let cellNib = UINib(nibName: "CustomCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "CustomCell")
@@ -36,13 +36,8 @@ class ViewController: UIViewController {
     }
     func collapseRows(_ tableView: UITableView, descendantsOf row: Int) {
         if let item = self.dict.getItem(atRow: row) {
-            // get all rows that needs to be removed
-//            let rows: [Int]? = self.dict.getRowOfAllDescendants(ofId: item.id!)
-//            // remove from dict
-//            self.dict.removeAllDescendants(ofId: item.id!)
             
-            if let rows: [Int] = self.dict.collapseDescendants(ofId: item.id!) {
-                // remove from table
+            if let rows: [Int] = self.dict.collapseDescendants(ofId: item.id) {
                 var indexesToRemove: [IndexPath] = []
                 for row in rows {
                     indexesToRemove.append(IndexPath(row: row, section: 0))
@@ -51,17 +46,35 @@ class ViewController: UIViewController {
             }
         }
     }
+    func expandRows(_ tableView: UITableView, descendantsOf row: Int) {
+        if let item = self.dict.getItem(atRow: row) {
+            if let rows: [Int] = self.dict.expandDescendants(ofId: item.id) {
+
+                var indexesToInsert: [IndexPath] = []
+                for row in rows {
+                    indexesToInsert.append(IndexPath(row: row, section: 0))
+                }
+                tableView.beginUpdates()
+                tableView.insertRows(at: indexesToInsert, with: UITableViewRowAnimation.left)
+                tableView.endUpdates()
+            }
+        }
+    }
 }
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.section)
         print(indexPath.row)
-        self.collapseRows(tableView, descendantsOf: indexPath.row)
+        if self.dict.isCollapsed(atRow: indexPath.row) {
+            self.expandRows(tableView, descendantsOf: indexPath.row)
+        } else {
+            self.collapseRows(tableView, descendantsOf: indexPath.row)
+        }
     }
 }
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dict._count()
+        return self.dict.count()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
