@@ -15,10 +15,9 @@ class CustomCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-//        let selectedView = UIView(frame: CGRect.zero)
-//        selectedView.backgroundColor = UIColor(red: 20/255, green: 160/255, blue: 160/255, alpha: 0.5)
-//        selectedBackgroundView = selectedView
-        
+        let selectedView = UIView(frame: CGRect.zero)
+        selectedView.backgroundColor = UIColor(red: 20/255, green: 160/255, blue: 160/255, alpha: 0.5)
+        backgroundView = BackgroudView()
         self.indentationWidth = 10.0
 
     }
@@ -40,4 +39,43 @@ class CustomCell: UITableViewCell {
     }
     
 }
+class BackgroudView: UIView {
+    public init() {
+        super.init(frame: CGRect(x: 0, y: 0, width: 480, height: 320))
+        backgroundColor = UIColor.white
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
+    override func draw(_ rect: CGRect) {
+        
+        let aPath = UIBezierPath()
+        aPath.lineWidth = 1
+        let height = rect.height
+        
+        aPath.move(to: CGPoint(x:8.0, y:0.0))
+        
+        aPath.addLine(to: CGPoint(x:8.0, y:height))
+
+        aPath.move(to: CGPoint(x:18.0, y:0.0))
+        
+        aPath.addLine(to: CGPoint(x:18.0, y:height))
+
+        aPath.move(to: CGPoint(x:28.0, y:0.0))
+        
+        aPath.addLine(to: CGPoint(x:28.0, y:height))
+
+        //Keep using the method addLineToPoint until you get to the one where about to close the path
+        
+        aPath.close()
+        
+        //If you want to stroke it with a red color
+        UIColor.black.withAlphaComponent(0.05).set()
+        aPath.stroke()
+        //If you want to fill it as well
+        aPath.fill()
+
+    }
+}

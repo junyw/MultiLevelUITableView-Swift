@@ -124,12 +124,14 @@ class Dictionary {
     func getDescendants(of id: Int) -> [Int]? {
         return objects[id]!.descendants
     }
-    func addItemToLast(_ item: Item, id: Int) {
-        objects[id] = item
-        _indexes.append(id)
+    func addItemToLast(_ item: Item) {
+        objects[item.id] = item
+        _indexes.append(item.id)
     }
     func isCollapsed(atRow row: Int) -> Bool {
         let item = getItem(atRow: row)
         return (item?.collapsed)!
     }
 }
+
+

@@ -15,7 +15,7 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="93" id="iRF-88-CCR" customClass="CustomCell" customModule="multilevelUITableView" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iRF-88-CCR" id="qIM-fi-USm">
+            <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iRF-88-CCR" id="qIM-fi-USm">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="92.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -32,6 +32,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="rN2-rW-pqe" secondAttribute="trailing" constant="10" id="6dq-eV-U58"/>
                     <constraint firstAttribute="trailingMargin" secondItem="QC7-sK-AE2" secondAttribute="trailing" constant="10" id="C4B-RG-u4H"/>
