@@ -9,21 +9,23 @@
 import UIKit
 
 class CustomCell: UITableViewCell {
-    
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        let selectedView = UIView(frame: CGRect.zero)
-        selectedView.backgroundColor = UIColor(red: 20/255, green: 160/255, blue: 160/255, alpha: 0.5)
-        selectedBackgroundView = selectedView
+//        let selectedView = UIView(frame: CGRect.zero)
+//        selectedView.backgroundColor = UIColor(red: 20/255, green: 160/255, blue: 160/255, alpha: 0.5)
+//        selectedBackgroundView = selectedView
         
         self.indentationWidth = 10.0
 
     }
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.contentView.layoutIfNeeded()
+
         let xContentOffset: CGFloat = CGFloat(self.indentationLevel)*self.indentationWidth;
         var contentFrame: CGRect = self.contentView.frame
         contentFrame.origin.x = xContentOffset

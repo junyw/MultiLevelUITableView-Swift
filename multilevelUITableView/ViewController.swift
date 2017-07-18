@@ -11,9 +11,9 @@ import UIKit
 class ViewController: UIViewController {
     
     var dict = Dictionary()
-    let item1 = Item(id: 0, indent: 0, title: "title 0", descendants: [1])
-    let item2 = Item(id: 1, indent: 1, title: "title 1", descendants: [2])
-    let item3 = Item(id: 2, indent: 2, title: "title 2", descendants: [])
+    let item1 = Item(id: 0, indent: 0, title: "title 0", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ", descendants: [1])
+    let item2 = Item(id: 1, indent: 1, title: "title 1", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", descendants: [2])
+    let item3 = Item(id: 2, indent: 2, title: "title 2", text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore", descendants: [])
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -27,6 +27,11 @@ class ViewController: UIViewController {
 
         let cellNib = UINib(nibName: "CustomCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "CustomCell")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 80
+        
+        tableView.setNeedsLayout()
+        tableView.layoutIfNeeded()
 
     }
 
@@ -42,7 +47,7 @@ class ViewController: UIViewController {
                 for row in rows {
                     indexesToRemove.append(IndexPath(row: row, section: 0))
                 }
-                tableView.deleteRows(at: indexesToRemove, with: UITableViewRowAnimation.right)
+                tableView.deleteRows(at: indexesToRemove, with: UITableViewRowAnimation.automatic)
             }
         }
     }
@@ -55,7 +60,7 @@ class ViewController: UIViewController {
                     indexesToInsert.append(IndexPath(row: row, section: 0))
                 }
                 tableView.beginUpdates()
-                tableView.insertRows(at: indexesToInsert, with: UITableViewRowAnimation.left)
+                tableView.insertRows(at: indexesToInsert, with: UITableViewRowAnimation.automatic)
                 tableView.endUpdates()
             }
         }
@@ -65,9 +70,15 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.section)
         print(indexPath.row)
+        let cell: CustomCell = tableView.cellForRow(at: indexPath) as! CustomCell
         if self.dict.isCollapsed(atRow: indexPath.row) {
+            cell.detailLabel.text = self.dict.getItem(atRow: indexPath.row)?.text
+            cell.layoutSubviews()
             self.expandRows(tableView, descendantsOf: indexPath.row)
         } else {
+            cell.detailLabel.text = ""
+            cell.layoutSubviews()
+
             self.collapseRows(tableView, descendantsOf: indexPath.row)
         }
     }
@@ -87,7 +98,8 @@ extension ViewController: UITableViewDataSource {
             let item = self.dict.getItem(atRow: indexPath.row)
             print("\(item)")
             DispatchQueue.main.async {
-                cell.detailLabel.text = item?.title
+                cell.titleLabel.text = item?.title
+                cell.detailLabel.text = item?.text
                 if let indent = item?.indent {
                     print(indent)
                     cell.indentationLevel = indent

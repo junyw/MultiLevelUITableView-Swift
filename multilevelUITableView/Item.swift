@@ -9,10 +9,11 @@
 import Foundation
 
 class Item {
-    init(id: Int, indent: Int, title: String, descendants: [Int]) {
+    init(id: Int, indent: Int, title: String, text: String, descendants: [Int]) {
         self.id = id
         self.indent = indent
         self.title = title
+        self.text = text
         self.descendants = descendants
     }
 
@@ -20,5 +21,6 @@ class Item {
     var descendants: [Int] = []
     var indent: Int?
     var title: String?
+    var text: String?
     var collapsed: Bool = false
 }
