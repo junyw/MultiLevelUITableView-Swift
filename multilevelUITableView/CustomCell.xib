@@ -20,14 +20,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rN2-rW-pqe">
-                        <rect key="frame" x="18" y="40" width="339" height="34.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="18" y="27.5" width="339" height="52"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QC7-sK-AE2">
-                        <rect key="frame" x="18" y="18" width="339" height="21"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <rect key="frame" x="18" y="13" width="339" height="14.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -35,11 +35,11 @@
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="rN2-rW-pqe" secondAttribute="trailing" constant="10" id="6dq-eV-U58"/>
                     <constraint firstAttribute="trailingMargin" secondItem="QC7-sK-AE2" secondAttribute="trailing" constant="10" id="C4B-RG-u4H"/>
-                    <constraint firstItem="QC7-sK-AE2" firstAttribute="top" secondItem="qIM-fi-USm" secondAttribute="topMargin" constant="10" id="eBH-Wg-W20"/>
+                    <constraint firstItem="QC7-sK-AE2" firstAttribute="top" secondItem="qIM-fi-USm" secondAttribute="topMargin" constant="5" id="eBH-Wg-W20"/>
                     <constraint firstItem="QC7-sK-AE2" firstAttribute="leading" secondItem="qIM-fi-USm" secondAttribute="leadingMargin" constant="10" id="ind-kT-AKg"/>
                     <constraint firstItem="rN2-rW-pqe" firstAttribute="leading" secondItem="qIM-fi-USm" secondAttribute="leadingMargin" constant="10" id="kXw-Vm-l0C"/>
-                    <constraint firstItem="rN2-rW-pqe" firstAttribute="top" secondItem="QC7-sK-AE2" secondAttribute="bottom" constant="1" id="pRa-Ex-WrY"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="rN2-rW-pqe" secondAttribute="bottom" constant="10" id="pwH-P8-aO2"/>
+                    <constraint firstItem="rN2-rW-pqe" firstAttribute="top" secondItem="QC7-sK-AE2" secondAttribute="bottom" id="pRa-Ex-WrY"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="rN2-rW-pqe" secondAttribute="bottom" constant="5" id="pwH-P8-aO2"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
