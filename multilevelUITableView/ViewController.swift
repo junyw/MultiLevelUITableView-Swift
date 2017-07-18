@@ -103,9 +103,7 @@ extension ViewController: UITableViewDataSource {
         cell.detailLabel.text = item?.text
         if let indent = item?.indent {
             cell.indentationLevel = indent
-//            cell.contentView.backgroundColor = UIColor.black.withAlphaComponent(CGFloat(indent)/50.0)
         }
-//        cell.layoutSubviews()
 
         return cell
     }

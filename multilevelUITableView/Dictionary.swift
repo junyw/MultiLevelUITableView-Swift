@@ -19,7 +19,6 @@ class Dictionary {
             item.collapsed = false
             
             insertAllDescendants(ofId: id)
-            print(_indexes)
             let rows = getRowOfAllDescendants(ofId: id)
             return rows
         }

@@ -15,9 +15,8 @@ class CustomCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        let selectedView = UIView(frame: CGRect.zero)
-        selectedView.backgroundColor = UIColor(red: 20/255, green: 160/255, blue: 160/255, alpha: 0.5)
         backgroundView = BackgroudView()
+        self.selectionStyle = .none
         self.indentationWidth = 10.0
 
     }
@@ -54,18 +53,23 @@ class BackgroudView: UIView {
         let aPath = UIBezierPath()
         aPath.lineWidth = 1
         let height = rect.height
-        
-        aPath.move(to: CGPoint(x:8.0, y:0.0))
-        
-        aPath.addLine(to: CGPoint(x:8.0, y:height))
-
-        aPath.move(to: CGPoint(x:18.0, y:0.0))
-        
-        aPath.addLine(to: CGPoint(x:18.0, y:height))
-
-        aPath.move(to: CGPoint(x:28.0, y:0.0))
-        
-        aPath.addLine(to: CGPoint(x:28.0, y:height))
+        var xPos = CGFloat(8.0)
+        while xPos < rect.width {
+            aPath.move(to: CGPoint(x:xPos, y:0.0))
+            aPath.addLine(to: CGPoint(x:xPos, y:height))
+            xPos += 10.0
+        }
+//        aPath.move(to: CGPoint(x:8.0, y:0.0))
+//        
+//        aPath.addLine(to: CGPoint(x:8.0, y:height))
+//
+//        aPath.move(to: CGPoint(x:18.0, y:0.0))
+//        
+//        aPath.addLine(to: CGPoint(x:18.0, y:height))
+//
+//        aPath.move(to: CGPoint(x:28.0, y:0.0))
+//        
+//        aPath.addLine(to: CGPoint(x:28.0, y:height))
 
         //Keep using the method addLineToPoint until you get to the one where about to close the path
         
