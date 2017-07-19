@@ -20,6 +20,9 @@ class CustomCell: UITableViewCell {
         self.indentationWidth = 15.0
 
     }
+    override func didMoveToSuperview() {
+        self.layoutIfNeeded()
+    }
     override func layoutSubviews() {
         super.layoutSubviews()
         self.contentView.layoutIfNeeded()

@@ -9,10 +9,10 @@
 import Foundation
 
 class Dictionary {
-    var _indexes: [Int] = []
+    var rows: [Int] = []
     var objects: [Int: Item] = [:]
     func count() -> Int {
-        return _indexes.count
+        return rows.count
     }
     func expandDescendants(ofId id: Int) -> [Int] {
         if let item = self.getItem(withId: id) {
@@ -34,8 +34,8 @@ class Dictionary {
                 var counter = row + 1
                 for childId in descendants {
                     if let child = getItem(withId: childId) {
-                        // add this child back to _indexes
-                        _indexes.insert(childId, at: counter)
+                        // add this child back to rows
+                        rows.insert(childId, at: counter)
                         counter += 1
                         if !child.collapsed {
                             insertAllDescendants(ofId: childId)
@@ -80,8 +80,8 @@ class Dictionary {
     }
     func removeAll(ofId id: Int) {
         if let item = self.getItem(withId: id) {
-            if let id = _indexes.index(of: id) {
-                _indexes.remove(at: id)
+            if let id = rows.index(of: id) {
+                rows.remove(at: id)
 
             }
             let descendants = item.descendants
@@ -91,10 +91,10 @@ class Dictionary {
         }
     }
     func getItem(atRow row: Int) -> Item? {
-        return objects[_indexes[row]]
+        return objects[rows[row]]
     }
     func getRow(ofId id: Int) -> Int? {
-        return _indexes.index(of: id)
+        return rows.index(of: id)
     }
     func getRows(ofIds ids: [Int]) -> [Int]? {
         var results: [Int] = []
@@ -125,7 +125,7 @@ class Dictionary {
     }
     func addItemToLast(_ item: Item) {
         objects[item.id] = item
-        _indexes.append(item.id)
+        rows.append(item.id)
     }
     func isCollapsed(atRow row: Int) -> Bool {
         let item = getItem(atRow: row)
