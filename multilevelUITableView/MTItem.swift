@@ -1,5 +1,5 @@
 //
-//  Item.swift
+//  MTItem.swift
 //  multilevelUITableView
 //
 //  Created by Junyi Wang on 7/16/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Item {
+class MTItem {
     init(id: Int, indent: Int, title: String, text: String, descendants: [Int]) {
         self.id = id
         self.indent = indent

@@ -1,5 +1,5 @@
 //
-//  Collection.swift
+//  MTCollection.swift
 //  multilevelUITableView
 //
 //  Created by Junyi Wang on 7/18/17.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Collection {
-    var dicts: [Dictionary] = []
+class MTCollection {
+    var dicts: [MTDictionary] = []
     
     func numberOfSections() -> Int {
         return dicts.count
@@ -17,7 +17,7 @@ class Collection {
     func numberOfRowsInSection(_ section: Int) -> Int {
         return dicts[section].count()
     }
-    func getItem(_ indexPath: IndexPath) -> Item? {
+    func getItem(_ indexPath: IndexPath) -> MTItem? {
         return dicts[indexPath.section].getItem(atRow: indexPath.row)
     }
     func isCollapsed(_ indexPath: IndexPath) -> Bool {

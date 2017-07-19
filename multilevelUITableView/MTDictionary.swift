@@ -1,5 +1,5 @@
 //
-//  Dictionary.swift
+//  MTDictionary.swift
 //  multilevelUITableView
 //
 //  Created by Junyi Wang on 7/17/17.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-class Dictionary {
+class MTDictionary {
     var rows: [Int] = []
-    var objects: [Int: Item] = [:]
+    var objects: [Int: MTItem] = [:]
     func count() -> Int {
         return rows.count
     }
@@ -26,21 +26,29 @@ class Dictionary {
         return []
     }
     
-    func insertAllDescendants(ofId id: Int) -> Int{
+    func insertAllDescendants(ofId id: Int) -> Int {
         
         if let item = self.getItem(withId: id) {
             
-            let row = self.getRow(ofId: id)!
-            if !item.collapsed {
-                let descendants = item.descendants
-                var position = row + 1
-                for childId in descendants {
-                    // add this child back to rows
-                    rows.insert(childId, at: position)
-                    position = insertAllDescendants(ofId: childId)
+            if let row = self.getRow(ofId: id) {
+                if !item.collapsed {
+                    let descendants = item.descendants
+                    var position = row + 1
+                    for childId in descendants {
+                        // add this child back to rows
+                        if let child = getItem(withId: childId) {
+                            if child.collapsed {
+                                rows.insert(childId, at: position)
+                                position += 1
+                            } else {
+                                rows.insert(childId, at: position)
+                                position = insertAllDescendants(ofId: childId)
+                            }
+                        }
+                    }
+                    item.collapsed = false
+                    return position
                 }
-                item.collapsed = false
-                return position
             }
         }
         return 0
@@ -89,7 +97,7 @@ class Dictionary {
             }
         }
     }
-    func getItem(atRow row: Int) -> Item? {
+    func getItem(atRow row: Int) -> MTItem? {
         return objects[rows[row]]
     }
     func getRow(ofId id: Int) -> Int? {
@@ -116,13 +124,13 @@ class Dictionary {
         }
         return results
     }
-    func getItem(withId id: Int) -> Item? {
+    func getItem(withId id: Int) -> MTItem? {
         return objects[id]
     }
     func getDescendants(of id: Int) -> [Int]? {
         return objects[id]!.descendants
     }
-    func addItemToLast(_ item: Item) {
+    func addItemToLast(_ item: MTItem) {
         objects[item.id] = item
         rows.append(item.id)
     }
