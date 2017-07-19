@@ -18,33 +18,32 @@ class Dictionary {
         if let item = self.getItem(withId: id) {
             item.collapsed = false
             
-            insertAllDescendants(ofId: id)
-            let rows = getRowOfAllDescendants(ofId: id)
-            return rows
+            if insertAllDescendants(ofId: id) > 0 {
+                let rows = getRowOfAllDescendants(ofId: id)
+                return rows
+            }
         }
         return []
     }
-    func insertAllDescendants(ofId id: Int) {
+    
+    func insertAllDescendants(ofId id: Int) -> Int{
         
         if let item = self.getItem(withId: id) {
             
             let row = self.getRow(ofId: id)!
             if !item.collapsed {
                 let descendants = item.descendants
-                var counter = row + 1
+                var position = row + 1
                 for childId in descendants {
-                    if let child = getItem(withId: childId) {
-                        // add this child back to rows
-                        rows.insert(childId, at: counter)
-                        counter += 1
-                        if !child.collapsed {
-                            insertAllDescendants(ofId: childId)
-                        }
-                    }
+                    // add this child back to rows
+                    rows.insert(childId, at: position)
+                    position = insertAllDescendants(ofId: childId)
                 }
                 item.collapsed = false
+                return position
             }
         }
+        return 0
     }
     func collapseDescendants(ofId id: Int) -> [Int] {
         if let item = self.getItem(withId: id) {

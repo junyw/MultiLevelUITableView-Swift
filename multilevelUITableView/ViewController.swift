@@ -61,7 +61,8 @@ class ViewController: UIViewController {
         let item5 = Item(id: 5, indent: 3, title: "title 4", text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore", descendants: [6, 7])
         let item6 = Item(id: 6, indent: 4, title: "title 5", text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco ", descendants: [])
         let item7 = Item(id: 7, indent: 4, title: "title 6", text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco", descendants: [])
-        let item8 = Item(id: 8, indent: 1, title: "title 8", text: "Ut enim ad", descendants: [])
+        let item8 = Item(id: 8, indent: 1, title: "title 8", text: "Ut enim ad", descendants: [9])
+        let item9 = Item(id: 9, indent: 2, title: "title 9", text: "Ut enim ad", descendants: [])
 
         let dict = Dictionary()
         dict.addItemToLast(item1)
@@ -72,6 +73,7 @@ class ViewController: UIViewController {
         dict.addItemToLast(item6)
         dict.addItemToLast(item7)
         dict.addItemToLast(item8)
+        dict.addItemToLast(item9)
 
         return dict
     }
