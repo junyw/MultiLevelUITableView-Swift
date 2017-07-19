@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330B4A7C1F1ED331008BC1B7 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330B4A7B1F1ED331008BC1B7 /* Collection.swift */; };
 		33BFDB241F1BEEDC0011F6CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFDB231F1BEEDC0011F6CB /* AppDelegate.swift */; };
 		33BFDB261F1BEEDC0011F6CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFDB251F1BEEDC0011F6CB /* ViewController.swift */; };
 		33BFDB291F1BEEDC0011F6CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33BFDB271F1BEEDC0011F6CB /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		330B4A7B1F1ED331008BC1B7 /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		33BFDB201F1BEEDC0011F6CB /* multilevelUITableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = multilevelUITableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33BFDB231F1BEEDC0011F6CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33BFDB251F1BEEDC0011F6CB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				33BFDB471F1C0E000011F6CB /* CustomCell.xib */,
 				33BFDB491F1C14B10011F6CB /* Item.swift */,
 				33BFDB4B1F1D0B8A0011F6CB /* Dictionary.swift */,
+				330B4A7B1F1ED331008BC1B7 /* Collection.swift */,
 			);
 			path = multilevelUITableView;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				33BFDB4A1F1C14B10011F6CB /* Item.swift in Sources */,
 				33BFDB4C1F1D0B8A0011F6CB /* Dictionary.swift in Sources */,
 				33BFDB261F1BEEDC0011F6CB /* ViewController.swift in Sources */,
+				330B4A7C1F1ED331008BC1B7 /* Collection.swift in Sources */,
 				33BFDB461F1C09530011F6CB /* CustomCell.swift in Sources */,
 				33BFDB241F1BEEDC0011F6CB /* AppDelegate.swift in Sources */,
 			);

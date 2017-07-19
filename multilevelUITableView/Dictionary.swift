@@ -14,7 +14,7 @@ class Dictionary {
     func count() -> Int {
         return _indexes.count
     }
-    func expandDescendants(ofId id: Int) -> [Int]? {
+    func expandDescendants(ofId id: Int) -> [Int] {
         if let item = self.getItem(withId: id) {
             item.collapsed = false
             
@@ -46,10 +46,10 @@ class Dictionary {
             }
         }
     }
-    func collapseDescendants(ofId id: Int) -> [Int]? {
+    func collapseDescendants(ofId id: Int) -> [Int] {
         if let item = self.getItem(withId: id) {
             if item.collapsed {
-                return nil
+                return []
             } else {
                 let rows = getRowOfAllDescendants(ofId: id)
                 removeAllDescendants(ofId: id)
@@ -57,9 +57,9 @@ class Dictionary {
                 return rows
             }
         }
-        return nil
+        return []
     }
-    func getRowOfAllDescendants(ofId id: Int) -> [Int]? {
+    func getRowOfAllDescendants(ofId id: Int) -> [Int] {
         var results: [Int] = []
         if let item = getItem(withId: id) {
             for childId in item.descendants {
