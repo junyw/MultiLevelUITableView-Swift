@@ -9,22 +9,22 @@
 import Foundation
 
 class MTCollection {
-    var dicts: [MTDictionary] = []
+    var sections: [MTDictionary] = []
     
     func numberOfSections() -> Int {
-        return dicts.count
+        return sections.count
     }
     func numberOfRowsInSection(_ section: Int) -> Int {
-        return dicts[section].count()
+        return sections[section].count()
     }
     func getItem(_ indexPath: IndexPath) -> MTItem? {
-        return dicts[indexPath.section].getItem(atRow: indexPath.row)
+        return sections[indexPath.section].getItem(atRow: indexPath.row)
     }
     func isCollapsed(_ indexPath: IndexPath) -> Bool {
-        return dicts[indexPath.section].isCollapsed(atRow: indexPath.row)
+        return sections[indexPath.section].isCollapsed(atRow: indexPath.row)
     }
     func collapseDescendants(inSection section: Int, withId id: Int) -> [IndexPath] {
-        let dict = dicts[section]
+        let dict = sections[section]
         let rows =  dict.collapseDescendants(ofId: id)
         var indexesToRemove: [IndexPath] = []
         for row in rows {
@@ -33,7 +33,7 @@ class MTCollection {
         return indexesToRemove
     }
     func expandDescendants(inSection section: Int, withId id: Int) -> [IndexPath] {
-        let dict = dicts[section]
+        let dict = sections[section]
         let rows = dict.expandDescendants(ofId: id)
         var indexesToRemove: [IndexPath] = []
         for row in rows {

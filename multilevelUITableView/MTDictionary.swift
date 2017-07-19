@@ -9,11 +9,17 @@
 import Foundation
 
 class MTDictionary {
+    /// ids of MTItems. Items in this array will be presented in table view.
     var rows: [Int] = []
+    /// a dictionary of MTItems. The id of MTItem is used as key.
     var objects: [Int: MTItem] = [:]
     func count() -> Int {
         return rows.count
     }
+    /// Insert descendants of the given item into rows
+    ///
+    /// - Parameter id: id of an item
+    /// - Returns: the row number of inserted items
     func expandDescendants(ofId id: Int) -> [Int] {
         if let item = self.getItem(withId: id) {
             item.collapsed = false
@@ -26,6 +32,10 @@ class MTDictionary {
         return []
     }
     
+    /// Insert descendants of the given item into rows
+    ///
+    /// - Parameter id: id of an item
+    /// - Returns: the row number of last inserted item
     func insertAllDescendants(ofId id: Int) -> Int {
         
         if let item = self.getItem(withId: id) {
@@ -51,7 +61,7 @@ class MTDictionary {
                 }
             }
         }
-        return 0
+        return -1
     }
     func collapseDescendants(ofId id: Int) -> [Int] {
         if let item = self.getItem(withId: id) {

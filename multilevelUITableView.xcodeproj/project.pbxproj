@@ -18,6 +18,7 @@
 		33BFDB481F1C0E000011F6CB /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33BFDB471F1C0E000011F6CB /* CustomCell.xib */; };
 		33BFDB4A1F1C14B10011F6CB /* MTItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFDB491F1C14B10011F6CB /* MTItem.swift */; };
 		33BFDB4C1F1D0B8A0011F6CB /* MTDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFDB4B1F1D0B8A0011F6CB /* MTDictionary.swift */; };
+		33C4DE791F1FD51100A3269F /* ExampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C4DE781F1FD51100A3269F /* ExampleData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		33BFDB471F1C0E000011F6CB /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		33BFDB491F1C14B10011F6CB /* MTItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTItem.swift; sourceTree = "<group>"; };
 		33BFDB4B1F1D0B8A0011F6CB /* MTDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTDictionary.swift; sourceTree = "<group>"; };
+		33C4DE781F1FD51100A3269F /* ExampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				33BFDB491F1C14B10011F6CB /* MTItem.swift */,
 				33BFDB4B1F1D0B8A0011F6CB /* MTDictionary.swift */,
 				330B4A7B1F1ED331008BC1B7 /* MTCollection.swift */,
+				33C4DE781F1FD51100A3269F /* ExampleData.swift */,
 			);
 			path = multilevelUITableView;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33C4DE791F1FD51100A3269F /* ExampleData.swift in Sources */,
 				33BFDB4A1F1C14B10011F6CB /* MTItem.swift in Sources */,
 				33BFDB4C1F1D0B8A0011F6CB /* MTDictionary.swift in Sources */,
 				33BFDB261F1BEEDC0011F6CB /* ViewController.swift in Sources */,
